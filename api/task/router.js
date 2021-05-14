@@ -2,14 +2,6 @@
 const router = require('express').Router()
 const Tasks = require('./model')
 
-function convertBoolean(task) {
-    const converted = task.map(p => {
-        p.project_completed === 0 ? p.project_completed = false : p.project_completed = true
-        return p
-    })
-    return converted
-}
-
 router.get('/', async (req, res, next) => {
     try {
         const tasks = await Tasks.getTasks()
